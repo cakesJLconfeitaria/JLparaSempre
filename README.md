@@ -1,67 +1,63 @@
 # Jonas & Larissa 💌
 
-Página do casal — pronta pra hospedar no GitHub Pages.
+Página do casal — pronta pra hospedar no GitHub Pages. **4 temas** com seletor no canto superior direito.
 
-## Estrutura
+## Os temas
+
+| Tema | Vibe |
+|------|------|
+| **Clássica** | Creme, bordô e dourado, tipografia serifada em itálico |
+| **Polaroid** | Papel retrô, fotos como polaroids rotacionadas, letra manuscrita |
+| **Estrelado** | Céu noturno com estrelas piscando e estrelas cadentes, dourado e lavanda ✨ |
+| **Jardim** | Verde sálvia e rosa, leve e orgânico |
+
+O tema escolhido fica salvo no navegador de quem visita.
+
+## Estrutura dos arquivos
 
 ```
 seu-repositorio/
 ├── index.html        ← a página
-└── imagens/
-    ├── foto1.jpg
-    ├── foto2.jpg
-    ├── foto3.jpg
-    └── ...           ← quantas você quiser
+├── foto1.jpg
+├── foto2.jpg
+├── foto3.jpg
+└── ...               ← quantas fotos quiser (na raiz, modo teste atual)
 ```
 
-## Como hospedar no GitHub Pages
+> Atualmente o código procura as fotos na **raiz** (modo teste). Quando quiser organizar numa pasta `imagens/`, me avisa que eu troco — ou troque você: no `index.html` procure `'foto'+i` e mude pra `'imagens/foto'+i`.
 
-1. Crie um repositório no GitHub (pode ser público, ou então `seuusuario.github.io` se quiser usar o domínio raiz).
-2. Faça upload do `index.html` e da pasta `imagens/` com as fotos.
-3. Vá em **Settings → Pages**.
-4. Em **Source**, escolha `Deploy from a branch` → `main` → `/ (root)` → **Save**.
-5. Em alguns segundos sua página estará no ar em `https://seuusuario.github.io/nome-do-repo/`.
+## Hospedar no GitHub Pages
 
-## Adicionando fotos
+1. Crie um repositório **público** no GitHub.
+2. **Add file → Upload files**: suba o `index.html` e as fotos.
+3. **Settings → Pages → Source**: `Deploy from a branch` → `main` → `/ (root)` → **Save**.
+4. Em ~1 min o link aparece: `https://seuusuario.github.io/nome-do-repo/`.
 
-Coloque as fotos dentro da pasta `imagens/` numeradas em sequência a partir de 1:
+Dica: repositório nomeado exatamente como `seuusuario.github.io` dá link limpo sem o nome do repo no fim.
 
-- `foto1.jpg`, `foto2.jpg`, `foto3.jpg`, …
+## Adicionar fotos
 
-Formatos aceitos: **.jpg, .jpeg, .png, .webp** (a página detecta automaticamente).
+Numere em sequência a partir de 1, **sem pular números**: `foto1.jpg`, `foto2.jpg`, `foto3.jpg`…
+Formatos: `.jpg`, `.jpeg`, `.png`, `.webp`. Carrossel sem limite, com setas, bolinhas, swipe no celular e autoplay.
 
-A página vai carregando as fotos até encontrar um número que não exista — então as fotos precisam estar numeradas **sem pular números** (foto1, foto2, foto3… e não foto1, foto3, foto5).
+**Comprima as fotos** antes de subir ([squoosh.app](https://squoosh.app/)). Muitas fotos pesadas deixam o site lento.
 
-**Dica:** comprima as fotos antes de subir (use [squoosh.app](https://squoosh.app/) ou similar). 50 fotos de 200KB cada = 10MB total, carrega tranquilo. 50 fotos de 5MB cada = 250MB, vai ficar lento.
+## Trocar a música
 
-## Trocando a música
+No `index.html` procure por `0tgVpDi06FyKpA1z0VMD4v` (ID da música no Spotify — hoje "Perfect", Ed Sheeran).
+No Spotify: três pontinhos → Compartilhar → Copiar link → pegue o trecho depois de `/track/` e antes do `?` e substitua.
 
-Abra o `index.html` e procure por `0tgVpDi06FyKpA1z0VMD4v`. Esse é o ID da música no Spotify (atualmente "Perfect" do Ed Sheeran).
+## Trocar as datas
 
-Pra trocar:
-1. Abra a música no Spotify (app ou web).
-2. Clique nos três pontinhos → **Compartilhar → Copiar link da música**.
-3. O link vai ser tipo `https://open.spotify.com/track/SEU_ID_AQUI?si=...`
-4. Copie só o `SEU_ID_AQUI` e substitua o ID que está no `index.html`.
-
-## Trocando as datas
-
-No `index.html`, procure pela linha:
-
+No `index.html`:
 ```js
 var events = {
-  kiss:   new Date(2012, 9,  15, 21, 0, 0),
-  namoro: new Date(2013, 4,  1,  20, 0, 0)
+  kiss:   new Date(2012, 9, 15, 21, 0, 0),  // 15/out/2012 21h
+  namoro: new Date(2013, 4, 1, 20, 0, 0)    // 01/mai/2013 20h
 };
 ```
+**Mês é zero-indexado**: janeiro = 0 … dezembro = 11. Lembre de trocar também os textos das datas logo acima dos cronômetros.
 
-Formato: `new Date(ano, mês, dia, hora, minuto, segundo)`.
-**Atenção:** mês é zero-indexado — janeiro = 0, fevereiro = 1, …, dezembro = 11.
+## Mudar o tema padrão
 
-Também troque os textos abaixo dos cronômetros (procure por "15 de outubro" e "1 de maio").
-
-## Trocando o tema padrão
-
-A página abre no tema **Clássica** por padrão. O usuário pode trocar pelo botão no canto superior direito, e a escolha fica salva no navegador.
-
-Pra mudar o padrão pra Polaroid, troque `class="theme-classic"` por `class="theme-polaroid"` na tag `<body>`.
+Na tag `<body class="theme-classic">`, troque por `theme-polaroid`, `theme-night` ou `theme-garden`.
